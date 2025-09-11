@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const sidebar = `
     <div class="sidebar">
+      <a href="index.html">🖥️ dashboard</a>
       <a href="admin.html">🏠 Administration</a>
       <a href="financials.html">💰 Financials</a>
       <a href="opportunities.html">📊 Opportunities</a>

@@ -3,6 +3,16 @@ document.addEventListener("DOMContentLoaded", function() {
   const sidebar = `
     <div class="sidebar">
       <a href="index.html">🖥️ dashboard</a>
+      <a href="financials.html">💰 Financials</a>
+      <a href="sales.html">🧾 Sales - A/R</a>
+      <a href="purchasing.html">📦 Purchasing - A/P</a>
+    </div>
+  `;
+
+/* All menu
+  const sidebar = `
+    <div class="sidebar">
+      <a href="index.html">🖥️ dashboard</a>
       <a href="admin.html">🏠 Administration</a>
       <a href="financials.html">💰 Financials</a>
       <a href="opportunities.html">📊 Opportunities</a>
@@ -15,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="reports.html">📑 Reports</a>
     </div>
   `;
+*/
 
   // หาตำแหน่งที่ต้องการวาง sidebar
   document.getElementById("sidebar-container").innerHTML = sidebar;

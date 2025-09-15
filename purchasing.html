@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Menu SAP Style</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background: #e8f6f9;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: #d3eaf0;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar a {
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .sidebar a:hover {
+      background: #b6dae5;
+      cursor: pointer;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #444;
+    }
+
+    /* Workflow */
+    .workflow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: flex-start;
+    }
+
+    .workflow-item {
+      text-align: center;
+      width: 280px;
+    }
+
+    .workflow-item div {
+      width: 250px;
+      height: 250px;
+      margin: 0 auto 10px;
+      border-radius: 12px;
+      background: #f0f8fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #2980b9;
+      border: 2px solid #c5e1ec;
+      transition: 0.3s;
+    }
+
+    .workflow-item div:hover {
+      background: #2980b9;
+      color: white;
+      border-color: #2980b9;
+      cursor: pointer;
+    }
+
+    .workflow-item span {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar"  id="sidebar-container" >
+   <!-- <a>🏠 Administration</a>
+    <a>💰 Financials</a>
+    <a>📊 Opportunities</a>
+    <a>🧾 Sales - A/R</a>
+    <a>📦 Purchasing - A/P</a>
+    <a>👥 Business Partners</a>
+    <a>🏦 Banking</a>
+    <a>📂 Inventory</a>
+    <a>⚙️ Production</a>
+    <a>📑 Reports</a>  -->
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="section">
+      <h2>ระบบคู่มือการใช้งาน SAP</h2>
+      
+           <div class="workflow">
+            <div class="workflow-item">
+              <div>
+                    <iframe src="https://drive.google.com/file/d/1XHelzd6szt95UHr1wgfycg6RWsPcUn7Z/preview?usp=sharing" 
+                      width="100%" height="100%" allow="autoplay" allowfullscreen>
+                    </iframe>
+              </div>
+              <span>1.คู่มือการใช้งาน Remote Desktop</span>
+            </div>
+        </div>
+      
+    </div>
+  </div>
+
+
+</body>
+
+ <script src="sidebar.js"></script>
+
+</html>

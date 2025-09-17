@@ -4,9 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="sidebar">
       <a href="index.html">🏠 dashboard</a>
       <a href="remote.html">🖥️ Remote RPD.</a>
+      <a href="general.html">🗃️ General</a>
       <a href="financials.html">💰 Financials</a>
       <a href="sales.html">🧾 Sales - A/R</a>
       <a href="purchasing.html">📦 Purchasing - A/P</a>
+      <a href="Inventory.html">📝 Inventory</a>
+      <a href="production.html">⚙️ Production</a>
+      <a href="Trans.html">🚗 ISS Transportation</a>
       <a href="Billing.html">💵 Billing Process</a>
     </div>
   `;

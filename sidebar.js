@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="financials.html">💰 Financials</a>
       <a href="sales.html">🧾 Sales - A/R</a>
       <a href="purchasing.html">📦 Purchasing - A/P</a>
+      <a href="Billing.html">💵 Billing Process</a>
     </div>
   `;
 

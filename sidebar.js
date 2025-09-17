@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const sidebar = `
     <div class="sidebar">
-      <a href="index.html">🖥️ dashboard</a>
+      <a href="index.html">🏠 dashboard</a>
       <a href="remote.html">🖥️ Remote RPD.</a>
       <a href="financials.html">💰 Financials</a>
       <a href="sales.html">🧾 Sales - A/R</a>

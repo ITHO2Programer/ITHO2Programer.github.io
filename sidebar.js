@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="production.html">⚙️ Production</a>
       <a href="Trans.html">🚗 ISS Transportation</a>
       <a href="Billing.html">💵 Billing Process</a>
+      <a href="ErrorNote.html">🎯 Error Note</a>
     </div>
   `;
 

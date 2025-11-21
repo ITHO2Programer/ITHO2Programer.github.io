@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="Trans.html">🚗 ISS Transportation</a>
       <a href="Billing.html">💵 Billing Process</a>
       <a href="ErrorNote.html">🎯 Error Note</a>
+      <a href="Vdo.html">🎬 VDO Training</a>
     </div>
   `;
 
@@ -37,4 +38,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // หาตำแหน่งที่ต้องการวาง sidebar
   document.getElementById("sidebar-container").innerHTML = sidebar;
+
 });

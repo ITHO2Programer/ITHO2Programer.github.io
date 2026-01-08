@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="Trans.html">🚗 ISS Transportation</a>
       <a href="Billing.html">💵 Billing Process</a>
       <a href="ErrorNote.html">🎯 Error Note</a>
+       <a href="ProRequest.html">🛠️ Pro Request</a>
       <a href="Vdo.html">🎬 VDO Training</a>
     </div>
   `;
@@ -40,3 +41,4 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("sidebar-container").innerHTML = sidebar;
 
 });
+

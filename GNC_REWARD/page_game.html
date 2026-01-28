@@ -58,25 +58,25 @@
 
       /* ตำแหน่ง (อ้างอิงจากรูป map) */
       .pont1 {
-        top: 14%;
+        top: 9%;
         left: 10%;
         width: 38%;
         aspect-ratio: 1;
       }
       .pont2 {
-        top: 12%;
+        top: 8%;
         left: 59%;
         width: 38%;
         aspect-ratio: 1;
       }
       .pont3 {
-        top: 53%;
+        top: 49%;
         left: -1%;
         width: 45%;
         aspect-ratio: 1;
       }
       .pont4 {
-        top: 49%;
+        top: 45%;
         left: 44%;
         width: 55%;
         aspect-ratio: 1;
@@ -282,7 +282,7 @@ const questions = {
     Q4: {
     question: "บำบัดอย่างไร",
     answers: ["ทิ้งลงน้ำ", "ส่งไป Genco"],
-    correct: 1
+    correct: 2
   },
     Q5: {
     question: "น้ำที่ผ่านการบำบัดแล้ว ดีต่อสิ่งแวดล้อมหรือไม่",
@@ -313,7 +313,7 @@ function answerQuestion(re,choice,name,phone,com,pname) {
 //alert(re+""+qw.correct);
 
 
-saveToSheet(name, phone, com,pname+' '+qw.question,qw.answers[re]);
+saveToSheet(name, phone, com,pname+' '+qw.question,qw.answers[re-1]);
 
 
   if (re === qw.correct) {
@@ -371,9 +371,9 @@ function getQuestionBySet(setKey) {
 
 
         let index = 0;
-        let speed = 70;
+        let speed = 200; // ปกติ 75
         let rounds = 0;
-        const maxRounds = 25; // ปกติ 25
+        const maxRounds = 19; // ปกติ 25
 
         const finalIndex = Math.floor(Math.random() * points.length);
 
@@ -455,4 +455,3 @@ function getQuestionBySet(setKey) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
-

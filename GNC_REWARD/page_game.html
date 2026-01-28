@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+ <style>
+
+      body {
+        min-height: 100vh;
+        background-image: url("https://genco.co.th/wp-content/uploads/2022/12/modern-architecture-urban-skyline.jpg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        font-family: "Prompt", sans-serif;
+      }
+
+
+
+      .game-icon {
+        max-width: 400px; /* Desktop */
+        width: 100%;
+      }
+
+
+      /* Mobile */
+      @media (max-width: 576px) {
+        .game-icon {
+          max-width: 400px;
+          /* min-width: 500px; */
+        }
+
+      }
+
+
+    .check_pont {
+    display: inline;
+    border: 4px solid rgb(240, 39, 39);   /* ต้องมีความหนา */
+    border-radius: 50%;      /* วงกลมจริง */
+    background: transparent;
+    position: absolute;   /* หรือ fixed / relative */
+    top: 34%;
+    left: -2%;
+    z-index: 9999;
+
+  box-shadow: 
+         -2px -2.2px 0 #ffffff,
+          2px -2.2px 0 #ffffff,
+        -2px 2.2px 0 #ffffff,
+          2px 2.2px 0 #ffffff;
+ 
+    
+    }
+
+  
+
+    .pont1 {
+    top: 34%;
+    left: -2%;
+        width: 70px;
+    height: 70px;
+    }
+
+    .pont2 {
+    top: 34%;
+    left: 60%;
+    width: 140px;
+    height: 140px;
+    }
+
+    .pont3 {
+    top: 57%;
+    left: 2%;
+    width: 140px;
+    height: 140px;
+    }
+
+    .pont4 {
+    top: 59%;
+    left: 72%;
+    width: 70px;
+    height: 70px;
+    }
+
+
+.pont {
+  opacity: 0;
+}
+
+.pont.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+
+ </style>
+
+  <body>
+      
+    <div class="container-fluid">
+
+      <div class="row">
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+          <div class="d-flex justify-content-center">
+            <img
+              src="asset/icongame.png" class="img-fluid game-icon"
+            />
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
+          <div class="d-flex justify-content-center">
+            <img src="asset/map.png"  />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="check_pont pont1 pont" data-name="pont1"></div>
+    <div class="check_pont pont2 pont" data-name="pont2"></div>
+    <div class="check_pont pont3 pont" data-name="pont3"></div>
+    <div class="check_pont pont4 pont" data-name="pont4"></div>
+
+
+
+<script>
+
+
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    name: params.get('name'),
+    phone: params.get('phone')
+  };
+}
+
+
+
+
+
+
+window.onload = function () {
+
+  const points = [
+    document.querySelector('.pont2'),
+    document.querySelector('.pont3'),
+    document.querySelector('.pont1'),
+    document.querySelector('.pont4')
+  ];
+
+  let index = 0;
+  let speed = 80;
+  let rounds = 0;
+  const maxRounds = 25;
+
+  // 🔥 สุ่มเป้าหมายปลายทาง
+  const finalIndex = Math.floor(Math.random() * points.length);
+
+  function run() {
+    points.forEach(p => p.classList.remove('active'));
+    points[index].classList.add('active');
+
+    index = (index + 1) % points.length;
+    rounds++;
+
+    // ใกล้ถึงรอบสุดท้าย → ช้าลง
+    if (rounds > maxRounds * 0.6) {
+      speed += 70;
+    }
+
+    // ถ้ารอบครบ และ index ตรงกับเป้า → หยุด
+    if (rounds >= maxRounds && index === finalIndex) {
+      
+const pointName = points[finalIndex].dataset.name;
+const query = getQueryParams();
+
+  alert(
+    `หยุดที่: ${pointName}\n` +
+    `ชื่อ: ${query.name}\n` +
+    `เบอร์: ${query.phone}`
+  );
+        return;
+         
+    }
+
+    setTimeout(run, speed);
+  }
+
+  run();
+};
+</script>
+
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

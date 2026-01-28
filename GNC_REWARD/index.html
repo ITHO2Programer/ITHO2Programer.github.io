@@ -19,7 +19,89 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  font-family: 'Prompt', sans-serif;
 }
+
+.game-icon {
+  max-width: 700px;   /* Desktop */
+  width: 100%;
+}
+
+.game-icon-start {
+  max-width: 700px;   /* Desktop */
+  width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .game-icon {
+    max-width: 500px;
+    /* min-width: 500px; */
+  }
+
+ .game-icon-start {
+    max-width: 150px;
+    /* min-width: 500px; */
+  }
+
+}
+
+
+.white-stroke {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow:
+    -1px -1px 0 #ffffff,
+     1px -2.2px 0 #ffffff,
+    -1px  1px 0 #ffffff,
+     1px  1px 0 #ffffff;
+}
+
+
+.form-title {
+  font-weight: 600;
+  color: #045708;
+  font-size: 15px;
+}
+
+/* Input */
+.form-input {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid #c8e6c9;
+}
+
+.form-input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 0.2rem rgba(76,175,80,.25);
+}
+
+
+.promo-text {
+  width: 70%;
+  margin: 10px auto;
+}
+
+
+.promo-badge {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2f6f3e;               /* เขียวเข้ม อ่านง่าย */
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 18px;
+  border-radius: 30px;          /* pill shape */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.game-icon-start:hover{
+
+max-width: 160px;
+
+}
+ 
+
 </style>
 
     
@@ -33,14 +115,77 @@
     <div class="container-fluid">
       
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-light">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 bg-light ">
 
-                    <div>
-                        <img src="https://genco.co.th/wp-content/uploads/2021/08/Logo-genco.png">
+                    <div  class="d-flex justify-content-center"  >
+                        <img src="https://genco.co.th/wp-content/uploads/2021/08/Logo-genco.png" width="130px" >
                     </div>
 
             </div>
         </div>
+
+        <div class="row" style="margin-top: 100px;" >
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  col-12">
+
+                    <div  class="d-flex justify-content-center"  >
+                        <img src="asset/icongame.png" class="img-fluid game-icon" >
+                    </div>
+
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="margin-top: 20px;" >
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12" >
+                <h6 class="text-center promo-badge " >
+                    ร่วมสนุกกับเจนโก้ เพื่อลุ้นรับรางวัล
+                </h6>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 " style="margin-top: 10px;" >
+            </div>
+
+
+
+            <div class="col-12 col-md-4 text-md-end">
+        <label for="name" class="form-label form-title white-stroke">
+            ชื่อ–นามสกุล
+        </label>
+    </div>
+    <div class="col-12 col-md-8">
+        <input type="text" name="name" id="name"
+               class="form-control form-input"
+               placeholder="กรอกชื่อ-นามสกุล" required>
+    </div>
+
+    <!-- เบอร์โทร -->
+    <div class="col-12 col-md-4 text-md-end">
+        <label for="phone" class="form-label form-title white-stroke">
+            เบอร์โทร
+        </label>
+    </div>
+    <div class="col-12 col-md-8">
+        <input type="tel" name="phone" id="phone"
+               class="form-control form-input"
+               placeholder="0xx-xxx-xxxx" required>
+    </div>
+
+    <!-- ปุ่ม Start -->
+    <div class="col-12 text-center mt-4">
+        <a href="#" class="start-btn">
+            <img src="asset/start.png" alt="Start" class="game-icon-start">
+        </a>
+    </div>
+
+
+
+
+
+
+        </div>
+
+
+
 
       
     </div>

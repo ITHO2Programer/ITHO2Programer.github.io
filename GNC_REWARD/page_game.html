@@ -53,10 +53,10 @@
     }
 
     /* ตำแหน่ง (อ้างอิงจากรูป map) */
-    .pont1 { top: 35%; left: 5%;  width: 12%; aspect-ratio: 1; }
-    .pont2 { top: 30%; left: 62%; width: 22%; aspect-ratio: 1; }
-    .pont3 { top: 60%; left: 8%;  width: 22%; aspect-ratio: 1; }
-    .pont4 { top: 62%; left: 72%; width: 12%; aspect-ratio: 1; }
+    .pont1 { top: 14%; left: 10%;  width: 38%; aspect-ratio: 1; }
+    .pont2 { top: 12%; left: 59%; width: 38%; aspect-ratio: 1; }
+    .pont3 { top: 67%; left: 0%;  width: 45%; aspect-ratio: 1; }
+    .pont4 { top: 63%; left: 43%; width: 55%; aspect-ratio: 1; }
 
     /* animation */
     .pont { opacity: 0; transition: all .25s ease; }
@@ -64,12 +64,34 @@
       opacity: 1;
       transform: scale(1.1);
     }
+
+    .gamecard{
+     margin-top: 25px;
+     background-color: rgba(255, 255, 255, 0.412);
+    border-radius: 15px;
+
+    }
+
+    .promo-badge {
+      background: #ffffff;
+      color: #2f6f3e;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 10px 18px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin: 16px 0;
+    }
+
+
+
   </style>
 </head>
 
 <body>
 
-<div class="container-fluid pt-3">
+<div class="container-fluid pt-3 ">
 
   <!-- LOGO -->
   <div class="text-center mb-2">
@@ -77,13 +99,22 @@
   </div>
 
   <!-- MAP + POINT -->
-  <div class="map-wrapper">
+  <div class="map-wrapper gamecard">
+
+      <div class="promo-badge">
+       🌳 ตอบคำถามรักโลก 🌳
+      </div>
+
     <img src="asset/map.png" class="map-img">
 
-    <div class="check_pont pont1 pont" data-name="pont1"></div>
-    <div class="check_pont pont2 pont" data-name="pont2"></div>
-    <div class="check_pont pont3 pont" data-name="pont3"></div>
-    <div class="check_pont pont4 pont" data-name="pont4"></div>
+    <div class="check_pont pont1 pont" data-name="น้ำเสียที่เกิดจากโรงงาน"></div>
+    <div class="check_pont pont2 pont" data-name="เศษวัสดุเหลือทิ้งที่เกิดจากโรงงาน"></div>
+    <div class="check_pont pont3 pont" data-name="น้ำที่ผ่านการบำบัดโดย Genco"></div>
+    <div class="check_pont pont4 pont" data-name="ผลิตภัณฑ์รีไซเคิล จากเศษวัสดุเหลือทิ้ง โดย Genco"></div>
+
+
+  
+
   </div>
 
 </div>
@@ -99,6 +130,14 @@ function getQueryParams() {
 }
 
 window.onload = () => {
+  // Swal.fire("SweetAlert2 is working!");
+
+
+
+
+
+
+
 
   const points = [
     document.querySelector('.pont2'),
@@ -110,7 +149,7 @@ window.onload = () => {
   let index = 0;
   let speed = 70;
   let rounds = 0;
-  const maxRounds = 25;
+  const maxRounds = 25; // ปกติ 25
 
   const finalIndex = Math.floor(Math.random() * points.length);
 
@@ -128,12 +167,55 @@ window.onload = () => {
       const pointName = points[finalIndex].dataset.name;
 
       setTimeout(() => {
-        alert(
-          `🎯 ผลการสุ่ม\n` +
-          `จุดที่ได้: ${pointName}\n` +
-          `ชื่อ: ${q.name}\n` +
-          `เบอร์: ${q.phone}`
-        );
+        // alert(
+      //    `🎯 ผลการสุ่ม\n` +
+       //   `จุดที่ได้: ${pointName}\n` +
+      //    `ชื่อ: ${q.name}\n` +
+      //    `เบอร์: ${q.phone}`
+      //  );
+
+
+     const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-primary",
+    cancelButton: "btn btn-success"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: `<span style="font-size:26px">คุณได้รับคำถามเกี่ยวกับ</span>
+          <b style="font-size:16px">${pointName}</b>`,
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "ตอบ1",
+  cancelButtonText: "ตอบ2",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+});
+
+
+
+
+
+
+
       }, 300);
 
       return;
@@ -145,6 +227,7 @@ window.onload = () => {
   run();
 };
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

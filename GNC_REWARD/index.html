@@ -80,6 +80,11 @@
       border: none;
       padding: 0;
     }
+
+
+
+
+
   </style>
 </head>
 
@@ -114,7 +119,7 @@
       <div class="text-left">
 
         <div class="form-group">
-          <label class="form-title">ชื่อ–นามสกุล</label>
+          <label class="form-title ">ชื่อ–นามสกุล</label>
           <input
             type="text"
             name="name"
@@ -125,12 +130,23 @@
         </div>
 
         <div class="form-group">
-          <label class="form-title">เบอร์โทร</label>
+          <label class="form-title ">เบอร์โทร</label>
           <input
             type="tel"
             name="phone"
             class="form-control form-input"
             placeholder="0xx-xxx-xxxx"
+            required
+          />
+        </div>
+
+          <div class="form-group">
+          <label class="form-title ">ชื่อบริษัท</label>
+          <input
+            type="text"
+            name="com"
+            class="form-control form-input"
+            placeholder="บริษัท/สังกัด/สถานที่ทำงาน"
             required
           />
         </div>

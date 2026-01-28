@@ -1,136 +1,172 @@
 <!doctype html>
 <html lang="th">
-<head>
-  <meta charset="utf-8">
-  <title>GENCO ECO QUEST</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <title>GENCO ECO QUEST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+ 
 
-  <style>
-    body {
-      min-height: 100vh;
-      background-image: url("https://genco.co.th/wp-content/uploads/2022/12/modern-architecture-urban-skyline.jpg");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      font-family: "Prompt", sans-serif;
-    }
+    <!-- https://script.google.com/macros/s/AKfycbxqaS-sO5G3O5H1c7hrFE3vdRWK2rit-dQkMlJzp8PqxQDvg96Zs8Kdrk_HC496Oaf8/exec -->
+    <style>
+      body {
+        min-height: 100vh;
+        background-image: url("https://genco.co.th/wp-content/uploads/2022/12/modern-architecture-urban-skyline.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-family: "Prompt", sans-serif;
+      }
 
-    /* โลโก้ */
-    .game-icon {
-      max-width: 380px;
-      width: 100%;
-    }
+      /* โลโก้ */
+      .game-icon {
+        max-width: 380px;
+        width: 100%;
+      }
 
-    /* ===== MAP WRAPPER (หัวใจของทุกอย่าง) ===== */
-    .map-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 420px;   /* ล็อกทรงมือถือ */
-      margin: auto;
-    }
+      /* ===== MAP WRAPPER (หัวใจของทุกอย่าง) ===== */
+      .map-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 420px; /* ล็อกทรงมือถือ */
+        margin: auto;
+      }
 
-    .map-img {
-      width: 100%;
-      display: block;
-    }
+      .map-img {
+        width: 100%;
+        display: block;
+      }
 
-    /* ===== จุดวง ===== */
-    .check_pont {
-      position: absolute;
-      border: 4px solid red;
-      border-radius: 50%;
-      background: transparent;
-      z-index: 10;
-      box-shadow:
-        -2px -2px 0 #fff,
-         2px -2px 0 #fff,
-        -2px  2px 0 #fff,
-         2px  2px 0 #fff;
-    }
+      /* ===== จุดวง ===== */
+      .check_pont {
+        position: absolute;
+        border: 4px solid red;
+        border-radius: 50%;
+        background: transparent;
+        z-index: 10;
+        box-shadow:
+          -2px -2px 0 #fff,
+          2px -2px 0 #fff,
+          -2px 2px 0 #fff,
+          2px 2px 0 #fff;
+      }
 
-    /* ตำแหน่ง (อ้างอิงจากรูป map) */
-    .pont1 { top: 14%; left: 10%;  width: 38%; aspect-ratio: 1; }
-    .pont2 { top: 12%; left: 59%; width: 38%; aspect-ratio: 1; }
-    .pont3 { top: 67%; left: 0%;  width: 45%; aspect-ratio: 1; }
-    .pont4 { top: 63%; left: 43%; width: 55%; aspect-ratio: 1; }
+      /* ตำแหน่ง (อ้างอิงจากรูป map) */
+      .pont1 {
+        top: 14%;
+        left: 10%;
+        width: 38%;
+        aspect-ratio: 1;
+      }
+      .pont2 {
+        top: 12%;
+        left: 59%;
+        width: 38%;
+        aspect-ratio: 1;
+      }
+      .pont3 {
+        top: 53%;
+        left: -1%;
+        width: 45%;
+        aspect-ratio: 1;
+      }
+      .pont4 {
+        top: 49%;
+        left: 44%;
+        width: 55%;
+        aspect-ratio: 1;
+      }
 
-    /* animation */
-    .pont { opacity: 0; transition: all .25s ease; }
-    .pont.active {
-      opacity: 1;
-      transform: scale(1.1);
-    }
+      /* animation */
+      .pont {
+        opacity: 0;
+        transition: all 0.25s ease;
+      }
+      .pont.active {
+        opacity: 1;
+        transform: scale(1.1);
+      }
 
-    .gamecard{
-     margin-top: 25px;
-     background-color: rgba(255, 255, 255, 0.412);
-    border-radius: 15px;
+      .gamecard {
+        margin-top: 25px;
+        background-color: rgba(255, 255, 255, 0.412);
+        border-radius: 15px;
+      }
 
-    }
+      .promo-badge {
+        background: #ffffff;
+        color: #2f6f3e;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 10px 18px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin: 16px 0;
+      }
 
-    .promo-badge {
-      background: #ffffff;
-      color: #2f6f3e;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 10px 18px;
-      border-radius: 30px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      margin: 16px 0;
-    }
-
-
-
-  </style>
-</head>
-
-<body>
-
-<div class="container-fluid pt-3 ">
-
-  <!-- LOGO -->
-  <div class="text-center mb-2">
-    <img src="asset/icongame.png" class="img-fluid game-icon">
-  </div>
-
-  <!-- MAP + POINT -->
-  <div class="map-wrapper gamecard">
-
-      <div class="promo-badge">
-       🌳 ตอบคำถามรักโลก 🌳
-      </div>
-
-    <img src="asset/map.png" class="map-img">
-
-    <div class="check_pont pont1 pont" data-name="น้ำเสียที่เกิดจากโรงงาน"></div>
-    <div class="check_pont pont2 pont" data-name="เศษวัสดุเหลือทิ้งที่เกิดจากโรงงาน"></div>
-    <div class="check_pont pont3 pont" data-name="น้ำที่ผ่านการบำบัดโดย Genco"></div>
-    <div class="check_pont pont4 pont" data-name="ผลิตภัณฑ์รีไซเคิล จากเศษวัสดุเหลือทิ้ง โดย Genco"></div>
+      .promo-badge-low {
+        background: #ffffff;
+        color: #000000;
+         font-weight: 600; 
+        font-size: 16px;
+        padding: 10px 18px;
+        border-radius: 15px 15px 0 0;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin: 36px 0;
+      }
 
 
-  
+      .promo-badge-reward {
 
-  </div>
+        font-size: 22px;
+        color: #016715;
+       
+      }
 
-</div>
 
-<script>
-/* อ่านค่า GET */
-function getQueryParams() {
-  const p = new URLSearchParams(window.location.search);
-  return {
-    name: p.get('name') || '-',
-    phone: p.get('phone') || '-'
-  };
+            .qw {
+
+        font-size: 22px;
+        font-weight: 600; 
+        color: #002271;
+       
+      }
+
+
+
+.answer-btn {
+  width: 100%;
+  padding: 16px;
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-window.onload = () => {
-  // Swal.fire("SweetAlert2 is working!");
+.answer-a {
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: #fff;
+}
+
+.answer-b {
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: #fff;
+}
+
+.answer-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgb(255, 255, 255);
+}
 
 
 
@@ -138,96 +174,284 @@ window.onload = () => {
 
 
 
+
+
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid pt-3">
+      <!-- LOGO -->
+      <div class="text-center mb-2">
+        <img src="asset/icongame.png" class="img-fluid game-icon" />
+      </div>
+
+      <!-- MAP + POINT -->
+      <div class="map-wrapper gamecard">
+        <div class="promo-badge">🌳 ตอบคำถามรักโลก 🌳</div>
+
+        <img src="asset/map.png" class="map-img" />
+
+        <div
+          class="check_pont pont1 pont"
+          data-name="น้ำเสีย"
+        ></div>
+        <div
+          class="check_pont pont2 pont"
+          data-name="เศษวัสดุ"
+        ></div>
+        <div
+          class="check_pont pont3 pont"
+          data-name="น้ำดี"
+        ></div>
+        <div
+          class="check_pont pont4 pont"
+          data-name="ผลิตภัณฑ์"
+        ></div>
+
+        <div class="promo-badge-low ">
+        <div >🙏 ยินดีตอนรับ</div>
+
+          <div class="text-left" id="text_name"></div>
+          <!-- <div id="text_phone"></div> -->
+          <div class="text-left" id="text_com"></div>
+        <div >คำตอบของคุณ</div>
+          <div class=" promo-badge-reward" id="text_r"></div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <script>
+      function getQueryParams() {
+        const p = new URLSearchParams(window.location.search);
+        return {
+          name: p.get("name") || "-",
+          phone: p.get("phone") || "-",
+          com: p.get("com") || "-",
+        };
+      }
+
+
+
+
+function saveToSheet(name, phone, point ,quest ,reward) {
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("phone", phone);
+  formData.append("point", point);
+  formData.append("quest", quest);
+  formData.append("reward", reward);
+
+  fetch("https://script.google.com/macros/s/AKfycbwO2xMjTGSgYbLUWUpBCN_K2EMdeULcKGvwnXcwQvi4u15pejGVQEhLG29oYFs2xZu5/exec", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => {
+    console.log("Saved:", data);
+  })
+  .catch(err => {
+    console.error("Error:", err);
+  });
+}
+
+
+const questions = {
+  Q1: {
+    question: "ต้องนำไปบำบัดที่ไหน",
+    answers: ["แสมดำ", "มาบตาพุด"],
+    correct: 1
+  },
+  Q2: {
+    question: "บำบัดอย่างไร",
+    answers: ["ทิ้งลงน้ำ", "ส่งไป Genco"],
+    correct: 2
+  },
+    Q3: {
+    question: "ต้องนำไปบำบัดที่ไหน",
+    answers: ["แสมดำ", "มาบตาพุด"],
+    correct: 2
+  },
+    Q4: {
+    question: "บำบัดอย่างไร",
+    answers: ["ทิ้งลงน้ำ", "ส่งไป Genco"],
+    correct: 1
+  },
+    Q5: {
+    question: "น้ำที่ผ่านการบำบัดแล้ว ดีต่อสิ่งแวดล้อมหรือไม่",
+    answers: ["ดี", "ไม่ดี"],
+    correct: 1
+  } ,
+      Q6: {
+    question: "ผลิตภัณฑ์ Recycle ของ Genco คุณภาพดีใช่หรอไม่",
+    answers: ["ใช่", "ไม่"],
+    correct: 1
+  }
+};
+
+
+const questionSets = {
+  0: ["Q1", "Q2"],            // ชุด 0
+  1: ["Q3"],            // ชุด 1
+  2: ["Q5"],      // ชุด 2
+  3: ["Q6"]             // ชุด 3
+};
+
+
+function answerQuestion(re,choice,name,phone,com,pname) {
+  Swal.close();
+
+  const qw = getQuestionBySet(choice);
+
+//alert(re+""+qw.correct);
+
+
+saveToSheet(name, phone, com,pname+' '+qw.question,qw.answers[re]);
+
+
+  if (re === qw.correct) {
+    document.getElementById('text_r').innerText =  `🎉 ถูกต้อง!\n`;
+    Swal.fire({
+      icon: "success",
+      title: "🎉 ถูกต้อง!",
+      text: "เชิญรับของรางวัลได้เลย 👏🏻",
+      confirmButtonText: "ไปต่อ"
+    });
+  } else {
+    document.getElementById('text_r').innerText =  `❌ ไม่ถูกต้อง\n`;
+    Swal.fire({
+      icon: "error",
+      title: "❌ ผิด",
+      text: "ลองใหม่อีกครั้งนะ",
+      confirmButtonText: "โอเค"
+    });
+  }
+}
+
+
+
+
+function getQuestionBySet(setKey) {
+  const set = questionSets[setKey];   // เช่น 0
+  const qKey = set[Math.floor(Math.random() * set.length)];
+  return questions[qKey];
+}
+
+
+
+
+
+
+      window.onload = () => {
+
+
+    const query = getQueryParams();
+
+     document.getElementById('text_name').innerText =  ` คุณ : ${query.name}\n`;
+     document.getElementById('text_com').innerText =  ` จากบริษัท : ${query.com}\n`;
+
+      
 
   const points = [
+    document.querySelector('.pont1'),
     document.querySelector('.pont2'),
     document.querySelector('.pont3'),
-    document.querySelector('.pont1'),
     document.querySelector('.pont4')
   ];
 
-  let index = 0;
-  let speed = 70;
-  let rounds = 0;
-  const maxRounds = 25; // ปกติ 25
-
-  const finalIndex = Math.floor(Math.random() * points.length);
-
-  function run() {
-    points.forEach(p => p.classList.remove('active'));
-    points[index].classList.add('active');
-
-    index = (index + 1) % points.length;
-    rounds++;
-
-    if (rounds > maxRounds * 0.6) speed += 60;
-
-    if (rounds >= maxRounds && index === finalIndex) {
-      const q = getQueryParams();
-      const pointName = points[finalIndex].dataset.name;
-
-      setTimeout(() => {
-        // alert(
-      //    `🎯 ผลการสุ่ม\n` +
-       //   `จุดที่ได้: ${pointName}\n` +
-      //    `ชื่อ: ${q.name}\n` +
-      //    `เบอร์: ${q.phone}`
-      //  );
-
-
-     const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: "btn btn-primary",
-    cancelButton: "btn btn-success"
-  },
-  buttonsStyling: false
-});
-swalWithBootstrapButtons.fire({
-  title: `<span style="font-size:26px">คุณได้รับคำถามเกี่ยวกับ</span>
-          <b style="font-size:16px">${pointName}</b>`,
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonText: "ตอบ1",
-  cancelButtonText: "ตอบ2",
-  reverseButtons: true
-}).then((result) => {
-  if (result.isConfirmed) {
-    swalWithBootstrapButtons.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
-  } else if (
-    /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel
-  ) {
-    swalWithBootstrapButtons.fire({
-      title: "Cancelled",
-      text: "Your imaginary file is safe :)",
-      icon: "error"
-    });
-  }
-});
 
 
 
 
+        let index = 0;
+        let speed = 70;
+        let rounds = 0;
+        const maxRounds = 5; // ปกติ 25
+
+        const finalIndex = Math.floor(Math.random() * points.length);
+
+        function run() {
+          // ล้าง active
+          points.forEach((p) => p.classList.remove("active"));
+
+          // ใส่ active ที่ index ปัจจุบัน
+          points[index].classList.add("active");
+
+          // ✅ เช็คหยุด "ก่อน" ขยับ index
+          if (rounds >= maxRounds && index === finalIndex) {
+            const q = getQueryParams();
+            const pointName = points[index].dataset.name;
+
+          
+
+  const setKey = 0; // ได้มาจากระบบคุณ
+  const qw = getQuestionBySet(index);
 
 
 
-      }, 300);
+            const textshow = `
+        <span style="font-size:16px">คุณได้รับคำถามเกี่ยวกับ : ${pointName}</span> 
+        <b class="qw" >${qw.question} ❓</b> </br>
+      
+      `;
+      
+            setTimeout(() => {
 
-      return;
-    }
+            Swal.fire({
+              icon: "warning",
+              title: textshow,
+              showConfirmButton: false,
+              allowOutsideClick: false,
+              html: `
 
-    setTimeout(run, speed);
-  }
 
-  run();
-};
-</script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', ${query.phone}, '${query.com}' ,'${pointName}')">
+                  ${qw.answers[0]}
+                </button>
 
-</body>
+                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}', ${query.phone}, '${query.com}' ,'${pointName}')">
+                  ${qw.answers[1]}
+                </button>
+
+
+              `
+            });
+
+
+
+            }
+
+            
+            , 300);
+
+            
+
+            
+            return; // 🛑 หยุดจริง
+
+          }
+
+          // ค่อยขยับ index หลังจากยังไม่หยุด
+          index = (index + 1) % points.length;
+          rounds++;
+
+          if (rounds > maxRounds * 0.6) speed += 60;
+
+          setTimeout(run, speed);
+        }
+
+        run();
+      };
+
+      
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
 </html>

@@ -1,219 +1,150 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <title>ร่วมสนุกกับ Genco เพื่อลุ้นรับรางวัล</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <title>GENCO ECO QUEST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+  <!-- Bootstrap -->
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <!--   กำหนด css  -->
+  <style>
+    body {
+      min-height: 100vh;
+      background-image: url("https://genco.co.th/wp-content/uploads/2022/12/modern-architecture-urban-skyline.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      font-family: "Prompt", sans-serif;
+    }
 
-    <style>
-      body {
-        min-height: 100vh;
-        background-image: url("https://genco.co.th/wp-content/uploads/2022/12/hand-holding-tree-blur-green-nature.jpg");
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        font-family: "Prompt", sans-serif;
-      }
+    /* โลโก้ */
+    .game-icon {
+      max-width: 380px;
+      width: 100%;
+    }
 
-      .game-icon {
-        max-width: 700px; /* Desktop */
-        width: 100%;
-      }
+    /* ===== MAP WRAPPER (หัวใจของทุกอย่าง) ===== */
+    .map-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 420px;   /* ล็อกทรงมือถือ */
+      margin: auto;
+    }
 
-      .game-icon-start {
-        max-width: 700px; /* Desktop */
-        width: 100%;
-      }
+    .map-img {
+      width: 100%;
+      display: block;
+    }
 
-      /* Mobile */
-      @media (max-width: 576px) {
-        .game-icon {
-          max-width: 500px;
-          /* min-width: 500px; */
-        }
+    /* ===== จุดวง ===== */
+    .check_pont {
+      position: absolute;
+      border: 4px solid red;
+      border-radius: 50%;
+      background: transparent;
+      z-index: 10;
+      box-shadow:
+        -2px -2px 0 #fff,
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff;
+    }
 
-        .game-icon-start {
-          max-width: 150px;
-          /* min-width: 500px; */
-        }
-      }
+    /* ตำแหน่ง (อ้างอิงจากรูป map) */
+    .pont1 { top: 35%; left: 5%;  width: 12%; aspect-ratio: 1; }
+    .pont2 { top: 30%; left: 62%; width: 22%; aspect-ratio: 1; }
+    .pont3 { top: 60%; left: 8%;  width: 22%; aspect-ratio: 1; }
+    .pont4 { top: 62%; left: 72%; width: 12%; aspect-ratio: 1; }
 
-      .white-stroke {
-        color: #ffffff;
-        font-weight: 700;
-        text-shadow:
-          -1px -1px 0 #ffffff,
-          1px -2.2px 0 #ffffff,
-          -1px 1px 0 #ffffff,
-          1px 1px 0 #ffffff;
-      }
+    /* animation */
+    .pont { opacity: 0; transition: all .25s ease; }
+    .pont.active {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
 
-      .form-title {
-        font-weight: 600;
-        color: #045708;
-        font-size: 15px;
-      }
+<body>
 
-      /* Input */
-      .form-input {
-        border-radius: 12px;
-        padding: 10px 14px;
-        border: 1px solid #c8e6c9;
-      }
+<div class="container-fluid pt-3">
 
-      .form-input:focus {
-        border-color: #4caf50;
-        box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
-      }
+  <!-- LOGO -->
+  <div class="text-center mb-2">
+    <img src="asset/icongame.png" class="img-fluid game-icon">
+  </div>
 
-      .promo-text {
-        width: 70%;
-        margin: 10px auto;
-      }
+  <!-- MAP + POINT -->
+  <div class="map-wrapper">
+    <img src="asset/map.png" class="map-img">
 
-      .promo-badge {
-        background: rgba(255, 255, 255, 0.9);
-        color: #2f6f3e; /* เขียวเข้ม อ่านง่าย */
-        font-weight: 600;
-        font-size: 18px;
-        padding: 10px 18px;
-        border-radius: 30px; /* pill shape */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        text-align: center;
-        letter-spacing: 0.3px;
-      }
+    <div class="check_pont pont1 pont" data-name="pont1"></div>
+    <div class="check_pont pont2 pont" data-name="pont2"></div>
+    <div class="check_pont pont3 pont" data-name="pont3"></div>
+    <div class="check_pont pont4 pont" data-name="pont4"></div>
+  </div>
 
-      .game-icon-start:hover {
-        max-width: 160px;
-      }
+</div>
 
-        .btn-clear {
-        background: transparent !important;
-        border: none !important;
-        padding: 0;
-        box-shadow: none;
-        outline: none;
-        }
+<script>
+/* อ่านค่า GET */
+function getQueryParams() {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    name: p.get('name') || '-',
+    phone: p.get('phone') || '-'
+  };
+}
 
+window.onload = () => {
 
-    </style>
+  const points = [
+    document.querySelector('.pont2'),
+    document.querySelector('.pont3'),
+    document.querySelector('.pont1'),
+    document.querySelector('.pont4')
+  ];
 
-    <!--   /กำหนด css  -->
-  </head>
-  <body>
+  let index = 0;
+  let speed = 70;
+  let rounds = 0;
+  const maxRounds = 25;
 
-<form action="page_game.html" method="get">
+  const finalIndex = Math.floor(Math.random() * points.length);
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 bg-light">
-          <div class="d-flex justify-content-center">
-            <img
-              src="https://genco.co.th/wp-content/uploads/2021/08/Logo-genco.png"
-              width="130px"
-            />
-          </div>
-        </div>
-      </div>
+  function run() {
+    points.forEach(p => p.classList.remove('active'));
+    points[index].classList.add('active');
 
-      <div class="row" style="margin-top: 70px">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
-          <div class="d-flex justify-content-center">
-            <img src="asset/icongame.png" class="img-fluid game-icon" />
-          </div>
-        </div>
+    index = (index + 1) % points.length;
+    rounds++;
 
-        <div
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12"
-          style="margin-top: 20px"
-        ></div>
+    if (rounds > maxRounds * 0.6) speed += 60;
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
-          <h6 class="text-center promo-badge">
-            ร่วมสนุกกับเจนโก้ เพื่อลุ้นรับรางวัล
-          </h6>
-        </div>
+    if (rounds >= maxRounds && index === finalIndex) {
+      const q = getQueryParams();
+      const pointName = points[finalIndex].dataset.name;
 
-        <div
-          class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12"
-          style="margin-top: 10px"
-        ></div>
+      setTimeout(() => {
+        alert(
+          `🎯 ผลการสุ่ม\n` +
+          `จุดที่ได้: ${pointName}\n` +
+          `ชื่อ: ${q.name}\n` +
+          `เบอร์: ${q.phone}`
+        );
+      }, 300);
 
-        <div class="col-12 col-md-4 text-md-end">
-          <label for="name" class="form-label form-title white-stroke">
-            ชื่อ–นามสกุล
-          </label>
-        </div>
-        <div class="col-12 col-md-8">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            class="form-control form-input"
-            placeholder="กรอกชื่อ-นามสกุล"
-            required
-          />
-        </div>
+      return;
+    }
 
-        <!-- เบอร์โทร -->
-        <div class="col-12 col-md-4 text-md-end">
-          <label for="phone" class="form-label form-title white-stroke">
-            เบอร์โทร
-          </label>
-        </div>
-        <div class="col-12 col-md-8">
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            class="form-control form-input"
-            placeholder="0xx-xxx-xxxx"
-            required
-          />
-        </div>
+    setTimeout(run, speed);
+  }
 
-        <!-- ปุ่ม Start -->
-        <div class="col-12 text-center mt-4">
-          <button  type="submit" class="btn-clear" >
-            <img src="asset/start.png" alt="Start" class="game-icon-start" />
-          </button >
-        </div>
-      </div>
-    </div>
+  run();
+};
+</script>
 
-</form>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+</body>
 </html>

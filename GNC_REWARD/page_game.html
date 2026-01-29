@@ -43,7 +43,7 @@
 
       .textmap-img {
         width: 200%;
-        display: block;
+      
       }
 
       .textmap {
@@ -394,7 +394,7 @@ function clearQueryAfterLoad() {
       function getQueryParams() {
         const p = new URLSearchParams(window.location.search);
         return {
-          name: p.get("name") || "-",
+          name: p.get("name"),
           phone: p.get("phone") || "-",
           com: p.get("com") || "-",
           game: p.get("game") || "-",

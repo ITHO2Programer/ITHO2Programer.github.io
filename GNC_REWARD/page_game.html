@@ -10,8 +10,7 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
- 
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- https://script.google.com/macros/s/AKfycbxqaS-sO5G3O5H1c7hrFE3vdRWK2rit-dQkMlJzp8PqxQDvg96Zs8Kdrk_HC496Oaf8/exec -->
     <style>
       body {
@@ -42,6 +41,34 @@
         display: block;
       }
 
+      .textmap-img {
+        width: 200%;
+        display: block;
+      }
+
+      .textmap {
+        aspect-ratio: 1;
+        position: absolute;
+        z-index: 10;
+      }
+
+      .mappo1 {
+        top: 17%;
+        left: 10%;
+        width: 38%;
+      }
+
+      .mappo2 {
+
+        color: #ff0000;
+        font-weight: 600;
+        font-size: 170px;
+        top: 22%;
+        left: 35%;
+        width: 38%;
+
+      }
+
       /* ===== จุดวง ===== */
       .check_pont {
         position: absolute;
@@ -58,27 +85,27 @@
 
       /* ตำแหน่ง (อ้างอิงจากรูป map) */
       .pont1 {
-        top: 9%;
-        left: 10%;
-        width: 38%;
+        top: 10%;
+        left: 1%;
+        width: 50%;
         aspect-ratio: 1;
       }
       .pont2 {
-        top: 8%;
-        left: 59%;
-        width: 38%;
+        top: 12%;
+        left: 48%;
+        width: 57%;
         aspect-ratio: 1;
       }
       .pont3 {
-        top: 49%;
-        left: -1%;
+        top: 37%;
+        left: 2%;
         width: 45%;
         aspect-ratio: 1;
       }
       .pont4 {
-        top: 45%;
-        left: 44%;
-        width: 55%;
+        top: 42%;
+        left: 48%;
+        width: 50%;
         aspect-ratio: 1;
       }
 
@@ -113,7 +140,7 @@
       .promo-badge-low {
         background: #ffffff;
         color: #000000;
-         font-weight: 600; 
+        font-weight: 600;
         font-size: 16px;
         padding: 10px 18px;
         border-radius: 15px 15px 0 0;
@@ -122,253 +149,499 @@
         margin: 36px 0;
       }
 
-
       .promo-badge-reward {
-
         font-size: 22px;
         color: #016715;
-       
       }
 
-
-            .qw {
-
+      .qw {
         font-size: 22px;
-        font-weight: 600; 
+        font-weight: 600;
         color: #002271;
-       
+      }
+
+      .answer-btn {
+        width: 100%;
+        padding: 16px;
+        margin: 10px 0;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 14px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .answer-a {
+        background: linear-gradient(135deg, #4caf50, #2e7d32);
+        color: #fff;
+      }
+
+      .answer-b {
+        background: linear-gradient(135deg, #4caf50, #2e7d32);
+        color: #fff;
+      }
+
+      .answer-btn:hover {
+        transform: scale(1.03);
+        box-shadow: 0 6px 16px rgb(255, 255, 255);
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInlow {
+        0% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+
+    .fontshow_start {
+  font-size: 45px;
+   animation: fadeInlow 1s infinite;
+      }
+
+          .fontshow_end {
+  color: #ff0000;
+  font-size: 45px;
+   animation: fadeInlow 1s infinite;
       }
 
 
 
-.answer-btn {
-  width: 100%;
-  padding: 16px;
-  margin: 10px 0;
-  font-size: 20px;
-  font-weight: bold;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+      .fade-in-load0 {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
 
-.answer-a {
-  background: linear-gradient(135deg, #4CAF50, #2e7d32);
-  color: #fff;
-}
+      .fade-in-load1 {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 1s;
+      }
 
-.answer-b {
-  background: linear-gradient(135deg, #4CAF50, #2e7d32);
-  color: #fff;
-}
-
-.answer-btn:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 16px rgb(255, 255, 255);
-}
+      .fade-in-load2 {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+        animation-delay: 2s;
+      }
 
 
+      .fade-in-load3 {
+        opacity: 0;
+         animation: fadeIn 1s forwards; 
+        animation-delay: 3s;
+      }
 
-
-
-
-
-
-
-
-
-
+      .fade-in-load4 {
+        opacity: 0;
+        animation: fadeIn 1s forwards; 
+        animation-delay: 8s;
+      }
     </style>
   </head>
 
-  <body>
+  <body onclick="bodyplay()" >
     <div class="container-fluid pt-3">
       <!-- LOGO -->
       <div class="text-center mb-2">
-        <img src="asset/icongame.png" class="img-fluid game-icon" />
+        <img
+          src="asset/icongame.png"
+          class="img-fluid game-icon fade-in-load0"
+        />
       </div>
 
       <!-- MAP + POINT -->
       <div class="map-wrapper gamecard">
-        <div class="promo-badge">🌳 ตอบคำถามรักโลก 🌳</div>
+        <div class="promo-badge fade-in-load1 ">🌳 ตอบคำถามรักโลก 🌳</div>
+      
 
-        <img src="asset/map.png" class="map-img" />
+        <img src="asset/map.png" class="map-img fade-in-load4" />
 
-        <div
-          class="check_pont pont1 pont"
-          data-name="น้ำเสีย"
-        ></div>
-        <div
-          class="check_pont pont2 pont"
-          data-name="เศษวัสดุ"
-        ></div>
-        <div
-          class="check_pont pont3 pont"
-          data-name="น้ำดี"
-        ></div>
-        <div
-          class="check_pont pont4 pont"
-          data-name="ผลิตภัณฑ์"
-        ></div>
+        <!-- ข้อความก่อนเริ่ม -->
+        <div class="textmap mappo1 fade-in-load3">  <img src="/asset/startin.png" class="textmap-img"  alt="" srcset="">  </div>
 
-        <div class="promo-badge-low ">
-        <div >🙏 ยินดีตอนรับ</div>
+              <div class="textmap mappo2  "> </div>
+
+        <!-- จุดที่สุ่ม -->
+
+        <div class="check_pont pont1 pont" data-name="ผลิตภัณฑ์"></div>
+
+        <div class="check_pont pont2 pont" data-name="ของเสียอันตราย"></div>
+        <div class="check_pont pont3 pont" data-name="ของเสีย"></div>
+        <div class="check_pont pont4 pont" data-name="น้ำเสีย"></div>
+
+        <div class="promo-badge-low fade-in-load2">
+          <div>🙏 ยินดีตอนรับ</div>
 
           <div class="text-left" id="text_name"></div>
           <!-- <div id="text_phone"></div> -->
           <div class="text-left" id="text_com"></div>
-        <div >คำตอบของคุณ</div>
-          <div class=" promo-badge-reward" id="text_r"></div>
-
+          <div>คำตอบของคุณ</div>
+          <div class="promo-badge-reward" id="text_r"></div>
         </div>
-
-
-
       </div>
     </div>
 
+<audio id="soundSpin1" src="asset/victory.mp3" preload="auto"></audio>
+<audio id="soundSpin2" src="asset/fail.mp3" preload="auto"></audio>
+<audio id="soundSpin3" src="asset/gameon.mp3" preload="auto"></audio>
+<audio id="soundSpin4" src="asset/timer_countdown cut.mp3" preload="auto"></audio>
+ <audio id="soundSpin6" src="asset/Random_quest2.mp3" preload="auto"></audio>
+<audio id="soundSpin7" src="asset/Random_quest3.mp3" preload="auto"></audio>
+<audio id="soundSpin8" src="asset/stoprandom.mp3" preload="auto"></audio>
+
     <script>
+
+
+const sound1 = document.getElementById("soundSpin1");
+const sound2 = document.getElementById("soundSpin2");
+const sound3 = document.getElementById("soundSpin3");
+const sound4 = document.getElementById("soundSpin4");
+const sound6 = document.getElementById("soundSpin6");
+const sound7 = document.getElementById("soundSpin7");
+const sound8 = document.getElementById("soundSpin8");
+
+
+function playSound1() {
+  sound1.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound1.play();
+}
+
+function playSound2() {
+  sound2.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound2.play();
+}
+
+function playSound3() {
+  sound3.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound3.volume = 0.3;
+  sound3.loop = true;
+  sound3.play();
+}
+
+function playSound4() {
+  sound4.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound4.volume = 0.6;
+  sound4.play();
+}
+
+
+function playSound6() {
+  sound6.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound6.volume = 0.3;
+  sound6.play();
+}
+
+function stopSound6() {
+   sound6.pause();
+   sound6.currentTime = 0; // รีเซ็ต
+}
+
+function playSound7() {
+  sound7.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound7.volume = 0.3;
+  sound7.play();
+}
+
+function stopSound7() {
+   sound7.pause();
+   sound7.currentTime = 0; // รีเซ็ต
+}
+
+function playSound8() {
+  sound8.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound8.volume = 1;
+  sound8.play();
+}
+
+// function stopSound() {
+//   sound1.pause();
+//   sound1.currentTime = 0; // รีเซ็ต
+// }
+
+function bodyplay(){
+        playSound3() ;
+}
+
+
+
+function clearQueryAfterLoad() {
+  if (window.location.search) {
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+  }
+}
+
+
+
+
       function getQueryParams() {
         const p = new URLSearchParams(window.location.search);
         return {
           name: p.get("name") || "-",
           phone: p.get("phone") || "-",
           com: p.get("com") || "-",
+          game: p.get("game") || "-",
         };
       }
 
+      function saveToSheet(name, phone, point, quest, reward) {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("phone", phone);
+        formData.append("point", point);
+        formData.append("quest", quest);
+        formData.append("reward", reward);
+
+        fetch(
+          "https://script.google.com/macros/s/AKfycbwO2xMjTGSgYbLUWUpBCN_K2EMdeULcKGvwnXcwQvi4u15pejGVQEhLG29oYFs2xZu5/exec",
+          {
+            method: "POST",
+            body: formData,
+          },
+        )
+          .then((res) => res.text())
+          .then((data) => {
+            console.log("Saved:", data);
+          })
+          .catch((err) => {
+            console.error("Error:", err);
+          });
+      }
+
+      const questions = {
+        //1
+        Q1: {
+          question: "GENCO มีการผลิตผลิตภัณฑ์จากของเสียไม่อันตราย คืออะไร",
+          answers: ["ไม่มี GENCO รับทำลายฝังกลบของเสียอย่างเดียว", "เชื้อเพลิงผสม SRF สำหรับใช้เป็นเชื้อเพลิงส่งโรงปูนซีเมนต์ / โรงไฟฟ้า (GENCO ศูนย์มาบตาพุด)"],
+          correct: 2,
+        },
+        //2
+        Q2: {
+          question: "หลอดไฟฟลูออเรสเซนต์ เป็นของเสียอันตรายหรือไม่อันตราย",
+          answers: ["อันตราย", "ไม่อันตราย"],
+          correct: 1,
+        },
+        Q3: {
+          question: "แบตเตอรี่รถยนต์แบบเติมน้ำกรด เป็นของเสียอันตรายหรือไม่อันตราย",
+          answers: ["อันตราย", "ไม่อันตราย"],
+          correct: 1,
+        },
+        Q4: {
+          question: "สเปรย์ฉีดกำจัดยุง มด แมลงสาบ เป็นของเสียอันตรายหรือไม่อันตราย",
+          answers: ["อันตราย", "ไม่อันตราย"],
+          correct: 1,
+        },
+        Q5: {
+          question: "เครื่องใช้ไฟฟ้าชำรุด เป็นของเสียอันตรายหรือไม่อันตราย",
+          answers: ["อันตราย", "ไม่อันตราย"],
+          correct: 1,
+        },
+
+        //3
+        Q6: {
+          question: "เครื่องใช้ไฟฟ้าชำรุด ควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ส่งทิ้งขยะทั่วไป", "ส่งรีไซเคิล"],
+          correct: 2,
+        },
+       Q7: {
+          question: "ฉลากพลาสติกโลโก้บริษัทที่ใช้ติดผลิตภัณฑ์ แต่เสื่อมสภาพแล้ว โรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ส่งทิ้งขยะทั่วไป", "ส่ง GENCO ศูนย์มาบตาพุด ทำเชื้อเพลิงผสม SRF"],
+          correct: 2,
+        },
+       Q8: {
+          question: "ผ้าอ้อมเด็ก ที่ผลิตไม่ได้มาตรฐานโรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ส่งทิ้งขยะทั่วไป", "ส่ง GENCO ศูนย์มาบตาพุด ทำเชื้อเพลิงผสม SRF"],
+          correct: 2,
+        },
+          Q9: {
+          question: "เศษผ้าปนเปื้อนน้ำมัน ของโรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ส่งทิ้งขยะทั่วไป", "ส่ง GENCO ศูนย์มาบตาพุด ทำเชื้อเพลิงผสม SRF"],
+          correct: 2,
+        },
+        Q10: {
+          question: "สารหล่อลื่น น้ำมัน Coolant ของโรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ส่งทิ้งขยะทั่วไป", "ส่ง GENCO ศูนย์มาบตาพุด ทำเชื้อเพลิงผสม SRF"],
+          correct: 2,
+        },
+        Q11: {
+          question: "หลอดไฟฟลูออเรสเซนต์ โรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ส่งทิ้งขยะทั่วไป", "ส่ง GENCO ศูนย์มาบตาพุด ทำเชื้อเพลิงผสม SRF"],
+          correct: 2,
+        },
+       //4
+        Q12: {
+          question: "น้ำเสียชุบโลหะของโรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ปล่อยทิ้งลงท่อสู่ภายนอก", "ส่ง GENCO ศูนย์แสมดำ บำบัดน้ำเสียด้วยวิธีทางเคมีกายภาพ"],
+          correct: 2,
+        },
+      
+          Q13: {
+          question: "น้ำเสียปนเปื้อนกรดหรือด่างของโรงงานควรกำจัดให้ถูกต้องอย่างไร",
+          answers: ["ปล่อยทิ้งลงท่อสู่ภายนอก", "ส่ง GENCO ศูนย์แสมดำ บำบัดน้ำเสียด้วยวิธีทางเคมีกายภาพ"],
+          correct: 2,
+        },
 
 
 
-function saveToSheet(name, phone, point ,quest ,reward) {
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("phone", phone);
-  formData.append("point", point);
-  formData.append("quest", quest);
-  formData.append("reward", reward);
+      };
 
-  fetch("https://script.google.com/macros/s/AKfycbwO2xMjTGSgYbLUWUpBCN_K2EMdeULcKGvwnXcwQvi4u15pejGVQEhLG29oYFs2xZu5/exec", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.text())
-  .then(data => {
-    console.log("Saved:", data);
-  })
-  .catch(err => {
-    console.error("Error:", err);
-  });
-}
+      const questionSets = {
+        0: ["Q1"], // ชุด 0
+        1: ["Q2","Q3","Q4","Q5"], // ชุด 1
+        2: ["Q6","Q7","Q8","Q9","Q10","Q11"], // ชุด 2
+        3: ["Q12","Q13"], // ชุด 3
+      };
 
+      function answerQuestion(re, choice, name, phone, com, pname) {
+        Swal.close();
 
-const questions = {
-  Q1: {
-    question: "ต้องนำไปบำบัดที่ไหน",
-    answers: ["แสมดำ", "มาบตาพุด"],
-    correct: 1
-  },
-  Q2: {
-    question: "บำบัดอย่างไร",
-    answers: ["ทิ้งลงน้ำ", "ส่งไป Genco"],
-    correct: 2
-  },
-    Q3: {
-    question: "ต้องนำไปบำบัดที่ไหน",
-    answers: ["แสมดำ", "มาบตาพุด"],
-    correct: 2
-  },
-    Q4: {
-    question: "บำบัดอย่างไร",
-    answers: ["ทิ้งลงน้ำ", "ส่งไป Genco"],
-    correct: 2
-  },
-    Q5: {
-    question: "น้ำที่ผ่านการบำบัดแล้ว ดีต่อสิ่งแวดล้อมหรือไม่",
-    answers: ["ดี", "ไม่ดี"],
-    correct: 1
-  } ,
-      Q6: {
-    question: "ผลิตภัณฑ์ Recycle ของ Genco คุณภาพดีใช่หรอไม่",
-    answers: ["ใช่", "ไม่"],
-    correct: 1
-  }
-};
+        const qw = getQuestionBySet(choice);
 
+        //alert(re+""+qw.correct);
 
-const questionSets = {
-  0: ["Q1", "Q2"],            // ชุด 0
-  1: ["Q3"],            // ชุด 1
-  2: ["Q5"],      // ชุด 2
-  3: ["Q6"]             // ชุด 3
-};
+        saveToSheet(
+          name,
+          phone,
+          com,
+          pname + " " + qw.question,
+          qw.answers[re - 1],
+        );
 
+        if (re === qw.correct) {
+          document.getElementById("text_r").innerText = `🎉 ถูกต้อง!\n`;
+          document.getElementById("text_r").classList.add("fontshow_start");
 
-function answerQuestion(re,choice,name,phone,com,pname) {
-  Swal.close();
+          Swal.fire({
+            icon: "success",
+            title: "🎉 ถูกต้อง!",
+            text: "เชิญรับของรางวัลได้เลย 👏🏻",
+          //  confirmButtonText: "ไปต่อ",
+          showConfirmButton: false,
+          });
 
-  const qw = getQuestionBySet(choice);
+        playSound1();
 
-//alert(re+""+qw.correct);
+        } else {
+          document.getElementById("text_r").innerText = `❌ ไม่ถูกต้อง\n`;
+          document.getElementById("text_r").classList.add("fontshow_end");
+          Swal.fire({
+            icon: "error",
+            title: `❌ ผิด คำตอบที่ถูกต้องคือ ${qw.answers[qw.correct-1]}`,
+            text: "ไม่ต้องเสียใจ เชิญรับรางวัลปลอบใจได้เลย ",
+            showConfirmButton: false,
+          });
 
+          playSound2();
+        }
+         $('.check_pont').hide();
+         clearQueryAfterLoad();
 
-saveToSheet(name, phone, com,pname+' '+qw.question,qw.answers[re-1]);
+      }
+var q_rendom = null;
+      function getQuestionBySet(setKey) {
+        const set = questionSets[setKey]; // เช่น 0
+         let qKey;
+        if (!q_rendom){
+         qKey = set[Math.floor(Math.random() * set.length)];
+         q_rendom = qKey ;
+        }else{
+         qKey = q_rendom ;
+        }
+       // alert(qKey);
+        return questions[qKey];
+      }
 
-
-  if (re === qw.correct) {
-    document.getElementById('text_r').innerText =  `🎉 ถูกต้อง!\n`;
-    Swal.fire({
-      icon: "success",
-      title: "🎉 ถูกต้อง!",
-      text: "เชิญรับของรางวัลได้เลย 👏🏻",
-      confirmButtonText: "ไปต่อ"
-    });
-  } else {
-    document.getElementById('text_r').innerText =  `❌ ไม่ถูกต้อง\n`;
-    Swal.fire({
-      icon: "error",
-      title: "❌ ผิด",
-      text: "ลองใหม่อีกครั้งนะ",
-      confirmButtonText: "โอเค"
-    });
-  }
-}
-
-
-
-
-function getQuestionBySet(setKey) {
-  const set = questionSets[setKey];   // เช่น 0
-  const qKey = set[Math.floor(Math.random() * set.length)];
-  return questions[qKey];
-}
-
-
-
-
-
-
+      // เมื่อโหลดหน้ามา
       window.onload = () => {
 
 
-    const query = getQueryParams();
 
-     document.getElementById('text_name').innerText =  ` คุณ : ${query.name}\n`;
-     document.getElementById('text_com').innerText =  ` จากบริษัท : ${query.com}\n`;
+
+
+
+
+
+        let checks = getQueryParams();
+        if(!checks.name || checks.name == '-'){
+          window.history.back();
+        }
 
       
 
-  const points = [
-    document.querySelector('.pont1'),
-    document.querySelector('.pont2'),
-    document.querySelector('.pont3'),
-    document.querySelector('.pont4')
-  ];
+     setTimeout(() => {
+
+ playSound4(); 
+
+$('.mappo2').text(3);
+
+     setTimeout(() => {
+$('.mappo2').text(2);
+
+
+     setTimeout(() => {
+$('.mappo2').text(1);
+
+     setTimeout(() => {
+
+  $('.mappo1').hide();
+  $('.mappo2').hide();
+
+      setTimeout(() => {
+        start_game() ;
+      }, 1000);
+
+            }, 1500);
+
+
+            }, 1000);
+
+
+            }, 1000);
+
+
+            }, 4000);
+
+
+
+      };
 
 
 
 
+
+
+
+      function start_game() {
+
+       playSound6();
+       const query = getQueryParams();
+
+        document.getElementById("text_name").innerText =
+          ` คุณ : ${query.name}\n`;
+        document.getElementById("text_com").innerText =
+          ` จากบริษัท : ${query.com}\n`;
+
+        const points = [
+          document.querySelector(".pont1"),
+          document.querySelector(".pont2"),
+          document.querySelector(".pont3"),
+          document.querySelector(".pont4"),
+        ];
 
         let index = 0;
         let speed = 200; // ปกติ 75
@@ -385,57 +658,58 @@ function getQuestionBySet(setKey) {
           points[index].classList.add("active");
 
           // ✅ เช็คหยุด "ก่อน" ขยับ index
+
+          if (rounds >= 14 ){
+            stopSound6();
+            playSound7();
+          }
+
+
           if (rounds >= maxRounds && index === finalIndex) {
+            
+            stopSound7();
+            playSound8();
+            
             const q = getQueryParams();
             const pointName = points[index].dataset.name;
 
-          
-
-  const setKey = 0; // ได้มาจากระบบคุณ
-  const qw = getQuestionBySet(index);
-
-
+            const setKey = 0; // ได้มาจากระบบคุณ
+            const qw = getQuestionBySet(index);
+           // alert(index);
 
             const textshow = `
         <span style="font-size:16px">คุณได้รับคำถามเกี่ยวกับ : ${pointName}</span> 
         <b class="qw" >${qw.question} ❓</b> </br>
       
       `;
-      
-            setTimeout(() => {
 
-            Swal.fire({
-              icon: "warning",
-              title: textshow,
-              showConfirmButton: false,
-              allowOutsideClick: false,
-              html: `
+            setTimeout(
+              () => {
+                Swal.fire({
+                  icon: "warning",
+                  title: textshow,
+                  showConfirmButton: false,
+                  allowOutsideClick: false,
+                  html: `
 
 
-                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', ${query.phone}, '${query.com}' ,'${pointName}')">
+                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', '${query.phone}', '${query.com}' ,'${pointName}')">
                   ${qw.answers[0]}
                 </button>
 
-                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}', ${query.phone}, '${query.com}' ,'${pointName}')">
+                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}','${query.phone}', '${query.com}' ,'${pointName}')">
                   ${qw.answers[1]}
                 </button>
 
 
-              `
-            });
+              `,
+                });
+              },
 
+              300,
+            );
 
-
-            }
-
-            
-            , 300);
-
-            
-
-            
             return; // 🛑 หยุดจริง
-
           }
 
           // ค่อยขยับ index หลังจากยังไม่หยุด
@@ -448,9 +722,7 @@ function getQuestionBySet(setKey) {
         }
 
         run();
-      };
-
-      
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>

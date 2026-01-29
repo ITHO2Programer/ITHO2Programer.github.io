@@ -10,7 +10,9 @@
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   />
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <style>
     body {
       min-height: 100vh;
@@ -64,6 +66,8 @@
       margin-bottom: 4px;
     }
 
+
+
     .form-input {
       border-radius: 12px;
       padding: 10px 14px;
@@ -81,6 +85,77 @@
       padding: 0;
     }
 
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes rotate_r_l {
+  0%   { transform: rotate(5deg); }
+  25%  { transform: rotate(0deg); } 
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(0deg); }
+  100% { transform: rotate(5deg); }
+}
+
+.rotate {
+  animation: rotate_r_l 1s infinite;
+}
+
+
+.fade-in-load0 {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+.fade-in-load2 {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 2s; /* รอ fade-in-load2 จบก่อน */
+}
+
+.fade-in-load4 {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 3s; /* รอ fade-in-load2 จบก่อน */
+}
+
+.fade-in-load6 {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  animation-delay: 4s; /* รอ fade-in-load2 จบก่อน */
+}
+
+.fade-in-load8 {
+  opacity: 0;
+  animation: fadeIn 2s forwards,
+            rotate_r_l 3s infinite;
+  animation-delay: 5s; /* รอ fade-in-load2 จบก่อน */
+
+
+}
+
+
+
+
+.slot {
+  width: 200px;
+  height: 40px;
+  overflow: hidden;
+  border: 2px solid #333;
+  text-align: center;
+  font-size: 20px;
+}
+
+.list {
+  transform: translateY(0);
+}
+
+.list div {
+  height: 40px;
+  line-height: 40px;
+}
+
 
 
 
@@ -88,19 +163,21 @@
   </style>
 </head>
 
-<body>
+<body onclick="bodyplay()">
 
-<form action="page_game.html" method="get">
+ <form action="page_game.html" id="gameForm" method="get"> 
 
   <!-- Logo -->
-  <div class="container py-3 bg-light">
+  <div class="container py-3 bg-light fade-in-load0">
     <div class="text-center">
       <img
         src="https://genco.co.th/wp-content/uploads/2021/08/Logo-genco.png"
         width="120"
         alt="GENCO"
+        class=""
       />
     </div>
+    
   </div>
 
   <!-- Content -->
@@ -108,22 +185,22 @@
     <div class="game-card text-center">
 
       <!-- Game Icon -->
-      <img src="asset/icongame.png" class="img-fluid game-icon mb-3" />
+      <img src="asset/icongame.png" class="img-fluid game-icon mb-3 fade-in-load2" />
 
       <!-- Promo -->
-      <div class="promo-badge">
+      <div class="promo-badge fade-in-load4" >
         ร่วมสนุกกับเจนโก้ เพื่อลุ้นรับรางวัล
       </div>
 
       <!-- Form -->
-      <div class="text-left">
+      <div class="text-left fade-in-load6">
 
         <div class="form-group">
           <label class="form-title ">ชื่อ–นามสกุล</label>
           <input
             type="text"
             name="name"
-            class="form-control form-input"
+            class="form-control form-input name"
             placeholder="กรอกชื่อ-นามสกุล"
             required
           />
@@ -134,7 +211,7 @@
           <input
             type="tel"
             name="phone"
-            class="form-control form-input"
+            class="form-control form-input phone"
             placeholder="0xx-xxx-xxxx"
             required
           />
@@ -145,7 +222,7 @@
           <input
             type="text"
             name="com"
-            class="form-control form-input"
+            class="form-control form-input com"
             placeholder="บริษัท/สังกัด/สถานที่ทำงาน"
             required
           />
@@ -153,15 +230,205 @@
 
       </div>
 
-      <!-- Start Button -->
-      <button type="submit" class="btn-clear mt-3">
-        <img src="asset/start.png" alt="Start" class="game-icon-start" />
-      </button>
+      <!-- Start Button  type="submit" fade-in-load8 -->
+      <!-- <button type="submit" class="btn-clear mt-3  "> -->
+       
+      <!-- </button> -->
+<input type="hidden" name="game" id="gameInput">
+</form>
+
+ <img src="asset/start.png" alt="Start" class="game-icon-start rotate fade-in-load8" onclick="spinGame()"/>
 
     </div>
   </div>
 
-</form>
+
+
+
+
+
+
+
+
+
+
+<audio id="soundSpin1" src="asset/game-start.mp3" preload="auto"></audio>
+<audio id="soundSpin2" src="asset/fail.mp3" preload="auto"></audio>
+<audio id="soundSpin3" src="asset/gameon.mp3" preload="auto"></audio>
+<audio id="soundSpin4" src="asset/spin.mp3" preload="auto"></audio>
+<audio id="soundSpin5" src="asset/victory.mp3" preload="auto"></audio>
+ <audio id="soundSpin6" src="asset/Random_quest.mp3" preload="auto"></audio>
+
+ 
+
+<script>
+
+const sound1 = document.getElementById("soundSpin1");
+const sound2 = document.getElementById("soundSpin2");
+const sound3 = document.getElementById("soundSpin3");
+const sound4 = document.getElementById("soundSpin4");
+const sound5 = document.getElementById("soundSpin5");
+const sound6 = document.getElementById("soundSpin6");
+
+
+
+function playSound1() {
+  sound1.currentTime = 0.7; // เล่นตั้งแต่ต้น
+  sound1.play();
+}
+
+function playSound2() {
+  sound2.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound2.play();
+}
+
+function playSound3() {
+  sound3.currentTime = 0; // เล่นตั้งแต่ต้น
+   sound3.volume = 0.5;
+   sound3.loop = true;
+  sound3.play();
+}
+
+function stopSound3() {
+  sound3.pause();
+  sound3.currentTime = 0;
+  sound3.loop = false;
+}
+
+function playSound4() {
+  sound4.currentTime = 0.3; // เล่นตั้งแต่ต้น
+  sound4.play();
+}
+
+function playSound5() {
+  sound5.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound5.play();
+}
+
+function playSound6() {
+  sound6.currentTime = 0; // เล่นตั้งแต่ต้น
+  sound6.volume = 0.7;
+  sound6.play();
+}
+
+  
+function bodyplay(){
+        playSound3() ;
+}
+   
+    
+
+
+function spinGame() {
+
+
+    if ($(".com").val() &&  $(".phone").val() && $(".name").val() ) {
+
+
+   playSound1();    
+   playSound4();
+
+        $(".game-icon-start").hide();
+        $(".fade-in-load6").hide();
+        $(".fade-in-load4").hide();
+        $(".fade-in-load2").hide();
+
+   
+
+
+
+  const games = ["ความรู้การอนุรักษ์", "ถาม-ตอบเจนโก้", "ตอบคำถามรักโลก", "ให้ความรู้เกี่ยวกับ Waste", "genco.co.th"];
+  const finalGame = "เกมตอบคำถามรักโลก"; // << เกมที่ตั้งใจให้หยุด
+
+  let i = 0;
+  let timer;
+
+  Swal.fire({
+    title: "กำลังสุ่มเกม... ",
+    html: `<div id="slotText" style="
+      font-size:28px;
+      font-weight:bold;
+      height:40px;
+      line-height:40px;
+      color: #2f6f3e;
+    ">เกมตอบคำถามรักโลก</div>`,
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    didOpen: () => {
+      const slot = document.getElementById("slotText");
+
+      // เริ่มหมุนเร็ว
+      timer = setInterval(() => {
+        slot.innerText = games[i % games.length];
+        i++;
+      }, 200);
+
+      // ชะลอ + หยุด
+      setTimeout(() => {
+        playSound5();
+        clearInterval(timer);
+        slot.innerText = finalGame;
+
+        Swal.update({
+          title: "ที่ได้คือ ❗",
+        //   showConfirmButton: true,
+        //   confirmButtonText: "โอเค"
+        });
+
+
+       setTimeout(() => {
+ 
+
+        Swal.update({
+          title: "กำลังเข้าสู่เกม "+ "<i class='fa fa-spinner fa-spin' aria-hidden='true'></i>",
+          html: "",
+  
+        });
+
+          setTimeout(() => {
+
+
+            document.getElementById("gameInput").value = finalGame;
+            document.getElementById("gameForm").submit();
+
+
+            }, 500);
+       /*
+
+*/
+        }, 2500); // หน่วงหลังแสดงผล (ms)
+
+
+      }, 3000); // หมุนกี่วิ
+
+
+    }
+  });
+
+
+   }else{
+
+playSound2();
+
+    Swal.fire({
+    icon: "error",
+    title: "กรุณากรอกข้อมูลให้ครบถ้วน ขอบคุณค่ะ",
+   confirmButtonText: `เข้าใจแล้ว`,
+   confirmButtonColor: "#28a745" ,
+    });
+  
+
+   }
+
+}
+
+
+
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

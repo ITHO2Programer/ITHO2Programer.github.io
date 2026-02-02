@@ -404,7 +404,8 @@ function clearQueryAfterLoad() {
           phone: p.get("phone") || "-",
           com: p.get("com") || "-",
           game: p.get("game") || "-",
-          interested: p.get("interested") || p.get("other"),
+          interested: p.get("interested") || "-",
+          other: p.get("other") || "-",
         };
       }
 
@@ -714,11 +715,11 @@ $('.mappo2').text(1);
                   html: `
 
 
-                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', '${query.phone}', '${query.com}' ,'${pointName}', '${query.interested}')">
+                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', '${query.phone}', '${query.com}' ,'${pointName}', '${query.interested}+${query.other}')">
                   ${qw.answers[0]}
                 </button>
 
-                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}','${query.phone}', '${query.com}' ,'${pointName}', '${query.interested}')">
+                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}','${query.phone}', '${query.com}' ,'${pointName}', '${query.interested}+${query.other}')">
                   ${qw.answers[1]}
                 </button>
 

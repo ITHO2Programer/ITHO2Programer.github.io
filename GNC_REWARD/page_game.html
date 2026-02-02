@@ -53,9 +53,15 @@
       }
 
       .mappo1 {
-        top: 17%;
-        left: 10%;
-        width: 38%;
+        top: 12%;
+      left: 6%;
+        /* width: 40%; */
+
+        font-weight: 600;
+        font-size: 25px;    
+        color: #002271;
+
+        text-align: center;
       }
 
       .mappo2 {
@@ -269,7 +275,7 @@
         <img src="asset/map.png" class="map-img fade-in-load4" />
 
         <!-- ข้อความก่อนเริ่ม -->
-        <div class="textmap mappo1 fade-in-load3">  <img src="/asset/startin.png" class="textmap-img"  alt="" srcset="">  </div>
+        <div class="textmap mappo1 fade-in-load3 ">  เกมเริ่มในอีก <br/><br/><br/><br/><br/><br/><br/><br/><br/>#วิธีเล่น ตอบคำถามให้ถูกต้อง  </div>
 
               <div class="textmap mappo2  "> </div>
 
@@ -398,19 +404,22 @@ function clearQueryAfterLoad() {
           phone: p.get("phone") || "-",
           com: p.get("com") || "-",
           game: p.get("game") || "-",
+          interested: p.get("interested") || p.get("other"),
         };
       }
 
-      function saveToSheet(name, phone, point, quest, reward) {
+      function saveToSheet(name, phone, point, quest, reward , status,interested) {
         const formData = new FormData();
         formData.append("name", name);
         formData.append("phone", phone);
         formData.append("point", point);
         formData.append("quest", quest);
         formData.append("reward", reward);
+        formData.append("status", status);
+        formData.append("interested", interested);
 
         fetch(
-          "https://script.google.com/macros/s/AKfycbwO2xMjTGSgYbLUWUpBCN_K2EMdeULcKGvwnXcwQvi4u15pejGVQEhLG29oYFs2xZu5/exec",
+          "https://script.google.com/macros/s/AKfycbxi0KmWRoRtREDnM3hTfwuYLHTHY1DZ9_4bJOR7UCrKFRNMKlzBqMGuf9yaneczN_c/exec",
           {
             method: "POST",
             body: formData,
@@ -509,22 +518,17 @@ function clearQueryAfterLoad() {
         3: ["Q12","Q13"], // ชุด 3
       };
 
-      function answerQuestion(re, choice, name, phone, com, pname) {
+      function answerQuestion(re, choice, name, phone, com, pname,interested) {
         Swal.close();
 
         const qw = getQuestionBySet(choice);
-
+        let s ;
         //alert(re+""+qw.correct);
 
-        saveToSheet(
-          name,
-          phone,
-          com,
-          pname + " " + qw.question,
-          qw.answers[re - 1],
-        );
+
 
         if (re === qw.correct) {
+          s = true ;
           document.getElementById("text_r").innerText = `🎉 ถูกต้อง!\n`;
           document.getElementById("text_r").classList.add("fontshow_start");
 
@@ -539,6 +543,7 @@ function clearQueryAfterLoad() {
         playSound1();
 
         } else {
+          s = false ;
           document.getElementById("text_r").innerText = `❌ ไม่ถูกต้อง\n`;
           document.getElementById("text_r").classList.add("fontshow_end");
           Swal.fire({
@@ -550,6 +555,20 @@ function clearQueryAfterLoad() {
 
           playSound2();
         }
+
+
+        saveToSheet(
+          name,
+          phone,
+          com,
+          pname + " " + qw.question,
+          qw.answers[re - 1],
+          s ,
+          interested ,
+        );
+
+
+
          $('.check_pont').hide();
          clearQueryAfterLoad();
 
@@ -695,11 +714,11 @@ $('.mappo2').text(1);
                   html: `
 
 
-                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', '${query.phone}', '${query.com}' ,'${pointName}')">
+                <button class="answer-btn answer-a" onclick="answerQuestion(1,${index},'${query.name}', '${query.phone}', '${query.com}' ,'${pointName}', '${query.interested}')">
                   ${qw.answers[0]}
                 </button>
 
-                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}','${query.phone}', '${query.com}' ,'${pointName}')">
+                <button class="answer-btn answer-b" onclick="answerQuestion(2,${index},'${query.name}','${query.phone}', '${query.com}' ,'${pointName}', '${query.interested}')">
                   ${qw.answers[1]}
                 </button>
 

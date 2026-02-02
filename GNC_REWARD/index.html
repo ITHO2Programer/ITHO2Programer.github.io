@@ -34,7 +34,7 @@
     }
 
     .game-icon {
-      max-width: 320px;
+      /* max-width: 320px; */
       width: 100%;
     }
 
@@ -98,6 +98,15 @@
   100% { transform: rotate(5deg); }
 }
 
+@keyframes icon_anima {
+  0%   {  opacity: 0.6; }
+  50% { opacity: 1.0; }
+  100% { opacity: 0.6; }
+}
+
+
+
+
 .rotate {
   animation: rotate_r_l 1s infinite;
 }
@@ -110,7 +119,8 @@
 
 .fade-in-load2 {
   opacity: 0;
-  animation: fadeIn 1s forwards;
+  animation: fadeIn 1s forwards,
+            icon_anima 2s infinite;
   animation-delay: 2s; /* รอ fade-in-load2 จบก่อน */
 }
 
@@ -185,7 +195,7 @@
     <div class="game-card text-center">
 
       <!-- Game Icon -->
-      <img src="asset/icongame.png" class="img-fluid game-icon mb-3 fade-in-load2" />
+      <img src="asset/iconhome.png" class="img-fluid game-icon mb-3 fade-in-load2  icon_anima_run" />
 
       <!-- Promo -->
       <div class="promo-badge fade-in-load4" >
@@ -228,6 +238,35 @@
           />
         </div>
 
+
+
+      <div class="form-group">
+        <label class="form-title " >กากที่สนใจกำจัด</label>
+        <select class="form-control form-input" name="interested" id="" onchange="open_o(this.value);"  required>
+          <option value="น้ำเสีย">น้ำเสีย</option>
+          <option value="ตะกอนชีวภาพ">ตะกอนชีวภาพ</option>
+          <option value="ตะกอนอื่นๆ">ตะกอนอื่นๆ</option>
+          <option value="น้ำหล่อเย็น">น้ำหล่อเย็น</option>
+          <option value="น้ำมันต่างๆ">น้ำมันต่างๆ</option>
+          <option value="เศษผ้าปนเปื้อนน้ำมัน">เศษผ้าปนเปื้อนน้ำมัน</option>
+          <option value="เศษพลาสติก/ผ้า/กระดาษ">เศษพลาสติก/ผ้า/กระดาษ</option>
+          <option value="O">อื่นๆ / ระบุ</option>
+        </select>
+      </div>
+
+        <div class="form-group other">
+          <label class="form-title ">ระบุ</label>
+          <input
+            type="input"
+            name="other"
+            class="form-control form-input "
+            placeholder="ระบุ"
+          />
+        </div>
+
+
+  
+
       </div>
 
       <!-- Start Button  type="submit" fade-in-load8 -->
@@ -262,6 +301,9 @@
  
 
 <script>
+
+$('.other').hide() ;
+
 
 const sound1 = document.getElementById("soundSpin1");
 const sound2 = document.getElementById("soundSpin2");
@@ -317,6 +359,21 @@ function bodyplay(){
 }
    
     
+
+
+
+
+function open_o(checs){
+
+  if (checs == 'O') {
+    $('.other').show() ;
+  }else{
+    $('.other').hide() ;
+  }
+
+}
+
+
 
 
 function spinGame() {

@@ -19,8 +19,24 @@
   <!-- Main -->
   <div class="main">
     <div class="section">
-      <h2>คู่มือ Inventory</h2>
-      
+      <h2>การสร้าง QR ของขนส่ง</h2>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<div id="qrcode"></div>
+<input id="text" placeholder="ใส่ข้อความหรือ URL">
+<button onclick="generate()">สร้าง QR</button>
+
+<script>
+function generate() {
+  document.getElementById("qrcode").innerHTML = ""; // เคลียร์ของเก่า
+  new QRCode(document.getElementById("qrcode"), {
+    text: document.getElementById("text").value,
+    width: 200,
+    height: 200
+  });
+}
+</script>
 
       
     </div>

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <a href="ErrorNote.html">🎯 Error Note</a>
        <a href="ProRequest.html">🛠️ Pro Request</a>
         <a href="booking.html">🚚 booking</a>
+         <a href="QR_Tran_Gnc.html">📸 QR Tran</a>
       <a href="Vdo.html">🎬 VDO Training</a>
     </div>
   `;
